@@ -1,0 +1,6 @@
+.dotinclude
+.bin/
+.tmux.conf
+.vim/
+.vimrc
+.zshrc

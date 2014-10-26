@@ -1,0 +1,32 @@
+#! /usr/bin/env bash
+
+function configSystem() {
+  if [ $(uname) == "Darwin" ]; then 
+    echo "Configuring OS X";
+    $1/bin/config-osx.sh; 
+  else 
+    echo ko; 
+  fi
+}
+
+function restore() {
+  cd $1;
+  rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bin/" -avh . $HOME/;
+  cd -;
+}
+
+function save() {
+  cd ~;
+  rsync --files-from "$HOME/.dotinclude" -avh $HOME/ $1/;
+  cd -;
+}
+
+CWD="$(dirname ${BASH_SOURCE})/../";
+if [ "$1" == "restore" ]; then
+  restore "$CWD";
+  if [ "$2" == "-c" ]; then
+    configSystem "$CWD";
+  fi
+elif [ "$1" == "save" ]; then
+  save "$CWD";
+fi
