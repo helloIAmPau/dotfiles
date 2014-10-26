@@ -64,31 +64,17 @@ export PROMPT="
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
 
-
 # Customize to your needs...
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-# added by travis gem
-[ -f /Users/helloiampau/.travis/travis.sh ] && source /Users/helloiampau/.travis/travis.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Android SDK Path
-export PATH="/Applications/Android Studio.app/sdk/platform-tools:$PATH"
-
-### Latex bin directory
-export PATH="/opt/TexLive/bin/x86_64-darwin:$PATH"
+# DotFiles bin files
+export PATH="$PATH/:$HOME/Develop/dotfiles/bin"
 
 ### Brew default editor
-export EDITOR="mvim"
+export EDITOR="vim"
 
 ### Adding aliases
 [[ -s "$HOME/.aliases" ]] && . $HOME/.aliases
-
-### Add RVM stuff
-export PATH=$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 ### Set locale motherfucker
 export LC_ALL=en_US.UTF-8
