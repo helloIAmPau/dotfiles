@@ -67,7 +67,7 @@ command! W :w
 " set history=1000
 " Backup dirs and other stuff
 if !isdirectory("/tmp/vim_bk")
-    call mkdir("/tmp/vim_bk", "p")
+  call mkdir("/tmp/vim_bk", "p")
 endif
 if has('persistent_undo')
   set undodir=/tmp/vim_bk
@@ -103,7 +103,7 @@ set clipboard=unnamed
 " ============ Packets Section ============
 " vundle packet manager
 let s:bundle_path=$HOME."/.vim/bundle/"
-execute "set rtp+=".s:bundle_path."vundle/"
+execute "set rtp+=".s:bundle_path."Vundle.vim/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
@@ -168,12 +168,12 @@ endif
 "Bundle 'vim-scripts/Reindent'
 
 " I <3 solarized
-"if has("gui_running")
-"  Bundle 'altercation/vim-colors-solarized'
-"  colorscheme solarized
-"endif
-Bundle 'Lokaltog/vim-distinguished'
-colorscheme distinguished
+if has("gui_running")
+  Bundle 'altercation/vim-colors-solarized'
+  colorscheme solarized
+endif
+"Bundle 'Lokaltog/vim-distinguished'
+"colorscheme distinguished
 set background=dark
 
 "Use <tab> key to autocomplete a search keyword

@@ -1,6 +1,6 @@
 .dotinclude
 .bin/
 .tmux.conf
-.vim/
+.vim/bundle/Vundle.vim/
 .vimrc
 .zshrc
