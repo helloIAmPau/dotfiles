@@ -10,6 +10,10 @@ sudo scutil --set ComputerName "WhiteNoise"
 sudo scutil --set HostName "WhiteNoise"
 sudo scutil --set LocalHostName "WhiteNoise"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "WhiteNoise"
+# Disable Guest account
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool false
+sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool false
 ##### TO CHANGE #####
 # Set standby delay to 24 hours (default is 1 hour)
 #sudo pmset -a standbydelay 86400
