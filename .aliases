@@ -1,0 +1,24 @@
+# Some aliases
+#alias ctags="`brew --prefix`/bin/ctags"
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias mvim="mvim --remote-tab-silent"
+alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias whois="whois -h whois-servers.net"
+#alias batterycycles="echo Cycles: `ioreg -l | grep 'BatteryInfo\" =' | sed -e s/.*$CycleCount=//g | sed 's/\}.*//g'`"
+# View HTTP traffic
+#alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+#alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+# Recursively delete `.DS_Store` files
+#alias rmstore="find . -type f -name '*.DS_Store' -ls -exec git rm {} +"
+
+# put a badge
+#alias badge="tput bel"
+
+# Prettify my JSON
+function prettyjson { echo $1 | python -mjson.tool; }
+
+function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
+
+alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
+#alias mail-list="~/.bin/info.sh mail-list"
+alias gmail="open http://mail.google.com"

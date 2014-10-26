@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+# Enabling sudo timeout
+sudo -v
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -14,6 +16,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool false
 sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool false
+dscl . -append /Users/Guest AuthenticationAuthority ";DisabledUser;"
 ##### TO CHANGE #####
 # Set standby delay to 24 hours (default is 1 hour)
 #sudo pmset -a standbydelay 86400
