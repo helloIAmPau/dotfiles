@@ -115,6 +115,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
+# Add iOS Simulator to Applications
+sudo ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications
 # Set the icon size of Dock items to 28 pixels
 defaults write com.apple.dock tilesize -int 28
 # Disable Dashboard
