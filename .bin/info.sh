@@ -9,8 +9,8 @@ function battery-status {
 }
 
 function mail-count {
-  PASSWORD=`security 2>&1 find-generic-password -ga climail | grep password: | awk -F'\"' '{ print $2 }'`
-  NMAIL=`curl -u "boemianrapsodi:$PASSWORD" --silent "https://mail.google.com/mail/feed/atom" | grep fullcount | awk -F "<|>" '{print $3}'`
+  PASSWORD=$(security 2>&1 find-generic-password -ga climail | grep password: | awk -F'\"' '{ print $2 }')
+  NMAIL=$(curl -u "boemianrapsodi:$PASSWORD" --silent "https://mail.google.com/mail/feed/atom" | grep fullcount | awk -F "<fullcount>|</fullcount>" '{print $2}')
   if [ "$NMAIL" = 0  ]; then
     echo "You have no mail";
   elif [ "$NMAIL" = 1 ]; then
