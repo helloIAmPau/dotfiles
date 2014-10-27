@@ -78,3 +78,6 @@ export EDITOR="vim"
 
 ### Set locale motherfucker
 export LC_ALL=en_US.UTF-8
+
+# Specify your defaults in this environment variable
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
