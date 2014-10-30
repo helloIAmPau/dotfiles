@@ -156,7 +156,7 @@ defaults write com.apple.dock magnification -bool true
 # Terminal & iTerm 2                                                          #
 ###############################################################################
 # Install the Solarized Dark theme for iTerm
-curl "https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors" > /tmp/Solarized\ Dark.itermcolors && open /tmp/Solarized\ Dark.itermcolors
+defaults read com.googlecode.iterm2 | grep "Solarized Dark" &> /dev/null || curl "https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors" > /tmp/Solarized\ Dark.itermcolors && open /tmp/Solarized\ Dark.itermcolors
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
@@ -174,5 +174,6 @@ defaults write org.m0k.transmission WarningDonate -bool false
 # Hide the legal disclaimer
 defaults write org.m0k.transmission WarningLegal -bool false
 # Set speed limits for home use
-defaults write org.m0k.transmission SpeedLimitDownloadLimit -int 9999;
-defaults write org.m0k.transmission SpeedLimitUploadLimit -int 10;
+defaults write org.m0k.transmission SpeedLimitDownloadLimit -int 9999
+defaults write org.m0k.transmission SpeedLimitUploadLimit -int 10
+defaults write org.m0k.transmission PiecesBar -bool true
