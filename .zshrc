@@ -81,3 +81,12 @@ export LC_ALL=en_US.UTF-8
 
 # Specify your defaults in this environment variable
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Android platform tools
+export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools/"
+
+### TexLive binary
+export PATH="$PATH:/opt/TexLive/bin/x86_64-darwin/"

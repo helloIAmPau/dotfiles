@@ -22,3 +22,5 @@ function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
 alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
 #alias mail-list="~/.bin/info.sh mail-list"
 alias gmail="open http://mail.google.com"
+
+function calc { echo $(( $1 $2 $3 )) }
