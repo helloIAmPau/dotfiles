@@ -124,6 +124,8 @@ Bundle 'kchmck/vim-coffee-script'
 
 " File tree
 Bundle 'scrooloose/nerdtree'
+map <C-t> :NERDTreeToggle<CR>
+
 
 " Buffer list
 Bundle 'troydm/easybuffer.vim'
