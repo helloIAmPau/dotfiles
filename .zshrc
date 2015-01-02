@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -49,20 +48,26 @@ source $ZSH/oh-my-zsh.sh
 # Report CPU usage for commands running longer than 1 seconds
 export REPORTTIME=1
 
+setopt prompt_subst
+
+ZSH_THEME_GIT_PROMPT_PREFIX="on %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
 # Show last exit code on right of prompt
 export RPROMPT='%(?..:()'
-
 # My current theme re-edited
-local current_dir='${PWD/#$HOME/~}'
-# Prompt format: \n # USER at MACHINE in DIRECTORY \n $ 
-export PROMPT="
+export PROMPT='
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 %{$fg[cyan]%}%n \
 %{$fg[white]%}at \
 %{$fg[green]%}$(hostname -s) \
 %{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+%{$terminfo[bold]$fg[yellow]%}$(pwd | sed -e "s,^$HOME,~,")%{$reset_color%} \
+$(git_prompt_info)
+%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}'
 
 # Customize to your needs...
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
