@@ -11,6 +11,9 @@ alias whois="whois -h whois-servers.net"
 # Recursively delete `.DS_Store` files
 #alias rmstore="find . -type f -name '*.DS_Store' -ls -exec git rm {} +"
 
+alias enc_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -e"
+alias dec_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -d"
+
 # put a badge
 #alias badge="tput bel"
 
@@ -24,3 +27,5 @@ alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
 alias gmail="open http://mail.google.com"
 
 function calc { echo $(( $1 $2 $3 )) }
+
+alias fuck='sudo $(fc -ln -1)'

@@ -48,6 +48,8 @@ imap <C-e> <esc>$i<right>
 " map CTRL-A to beginning-of-line (insert mode)
 imap <C-a> <esc>0i
 
+let g:tex_conceal = ""
+
 
 " ============ Behaviour Section ============
 " Source the vimrc file after saving it

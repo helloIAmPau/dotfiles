@@ -22,8 +22,51 @@ function mail-count {
   fi
 }
 
+function current-ssid {
+  SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep SSID | grep -v BSSID);
+  if [ $? -eq 0 ]; then
+    echo $SSID | awk '{ print $2 }';
+  else
+    echo "WiFi disconnected";
+  fi
+}
+
+function ipinfos {
+  NETADDR=$(ifconfig $1 | grep inet | grep -v inet6);
+  if [ $? -eq 0 ]; then
+    echo $NETADDR | awk '{ print $2 }';
+  else
+    echo "Disconnected";
+  fi
+}
+
+function extip {
+  EXT=$(dig +short myip.opendns.com @resolver1.opendns.com);
+  if [ $? -eq 0 ]; then
+    echo $EXT;
+  else
+    echo "No internet connection";
+  fi
+
+}
+
+function thegw {
+  GW=$(route -n get default | grep gateway);
+  if [ $? -eq 0 ]; then
+    echo $GW | awk '{ print $2 }';
+  else
+    echo "No gateway defined";
+  fi
+}
+
+function network {
+  echo -e "Network\n   IPs --| Lan  : $(ipinfos en0)\n         | WiFi : $(ipinfos en1)\n   Gateway      : $(thegw)\n   SSID         : $(current-ssid)\n   External IP  : $(extip)"
+}
+
 if [ "$1" = 'battery' ]; then
   battery-status;
 elif [ "$1" = 'mail' ]; then
   mail-count;
+elif [ "$1" = 'net' ]; then
+  network;
 fi

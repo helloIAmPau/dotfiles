@@ -95,3 +95,5 @@ export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools/"
 
 ### TexLive binary
 export PATH="$PATH:/opt/TexLive/bin/x86_64-darwin/"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
