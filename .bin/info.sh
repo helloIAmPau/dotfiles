@@ -60,7 +60,7 @@ function thegw {
 }
 
 function network {
-  echo -e "Network\n   IPs --| Lan  : $(ipinfos en0)\n         | WiFi : $(ipinfos en1)\n   Gateway      : $(thegw)\n   SSID         : $(current-ssid)\n   External IP  : $(extip)"
+  echo -e "Network\n   IP           : $(ipinfos en0)\n   Gateway      : $(thegw)\n   SSID         : $(current-ssid)\n   External IP  : $(extip)"
 }
 
 if [ "$1" = 'battery' ]; then

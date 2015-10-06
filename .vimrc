@@ -3,8 +3,6 @@ set nocompatible
 filetype off
 
 " ============ Presentation Section ============
-syntax on
-filetype plugin indent on
 " Enable toolbar
 set guioptions+=T
 " Enable (line, column) number
@@ -65,6 +63,15 @@ set mouse=a
 "noremap <right> <nop>
 " This make me feel a little better
 command! W :w
+" Prettyfy plugin
+fun! Pretty() "{{{
+  if(&ft=='json')
+    :%!python -m json.tool
+  elseif(&ft=='javascript')
+    :call JsBeautify()
+  endif
+endfunction "}}}
+cabbrev p :call Pretty()
 " Biiiiiiig history
 " set history=1000
 " Backup dirs and other stuff
@@ -104,39 +111,40 @@ set clipboard=unnamed
 
 " ============ Packets Section ============
 " vundle packet manager
-let s:bundle_path=$HOME."/.vim/bundle/"
-execute "set rtp+=".s:bundle_path."Vundle.vim/"
-call vundle#rc()
-Bundle 'gmarik/vundle'
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/vundle'
 
 " AG a powerful code search engine
-Bundle 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
 " Add proper end at block
-"Bundle 'tpope/vim-endwise'
-"Bundle 'tpope/vim-surround'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-surround'
 
 " Auto insert date in text
-" Bundle 'tpope/vim-speeddating'
+" Plugin 'tpope/vim-speeddating'
 
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 
 " Acting on buffer and on disk
-"Bundle 'tpope/vim-eunuch'
+"Plugin 'tpope/vim-eunuch'
 
 " File tree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 map <C-t> :NERDTreeToggle<CR>
 
 
 " Buffer list
-Bundle 'troydm/easybuffer.vim'
+Plugin 'troydm/easybuffer.vim'
 
 " Multiedit
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Smart status bar
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 "let g:Powerline_symbols = 'fancy'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -144,58 +152,71 @@ let g:airline_branch_prefix = ''
 set laststatus=2 " used to load statusbar on first window
 
 " Show a vertical line for blocks
-Bundle 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
 
 " Show tags of current code
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " Git tree explorer
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 
 " Comments in nerd way
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 "Remap the comment toggle combination to an easier ctrl-c
 map <C-c> <Leader>c<Space>
 
 " Show merge issue
-"Bundle 'sjl/splice.vim'
+"Plugin 'sjl/splice.vim'
 
 " Check syntax
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " get gradle classpath
 if filereadable(glob('./.vim.local'))
   so ./.vim.local
 endif
 
 " Reindent text
-"Bundle 'vim-scripts/Reindent'
+"Plugin 'vim-scripts/Reindent'
 
 " I <3 solarized
 if has("gui_running")
-  Bundle 'altercation/vim-colors-solarized'
+  Plugin 'altercation/vim-colors-solarized'
   colorscheme solarized
 endif
-"Bundle 'Lokaltog/vim-distinguished'
+"Plugin 'Lokaltog/vim-distinguished'
 "colorscheme distinguished
 set background=dark
 
 "Use <tab> key to autocomplete a search keyword
-Bundle 'vim-scripts/SearchComplete'
+Plugin 'vim-scripts/SearchComplete'
 
 "Shell in vim
-Bundle 'rosenfeld/conque-term'
+Plugin 'rosenfeld/conque-term'
 "Rapid shell!
 command Term ConqueTermSplit bash -l
 "autocmd FileType conque_term :AcpLock
 
 "Show automatically the completion popup
-"Bundle 'vim-scripts/AutoComplPop'
+"Plugin 'vim-scripts/AutoComplPop'
 
 " Faster completion
-Bundle "Shougo/neocomplcache.vim"
+Plugin 'Shougo/neocomplcache.vim'
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 
 "Tmux shared theme
-" Bundle 'edkolev/tmuxline.vim'
+" Plugin 'edkolev/tmuxline.vim'
+
+"Snippets
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
+
+call vundle#end() 
+
+syntax on
+filetype plugin indent on

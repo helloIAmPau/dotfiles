@@ -97,3 +97,9 @@ export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools/"
 export PATH="$PATH:/opt/TexLive/bin/x86_64-darwin/"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/helloiampau/.travis/travis.sh ] && source /Users/helloiampau/.travis/travis.sh
+
+### Maven binary
+export PATH="$PATH:/opt/maven/bin/"

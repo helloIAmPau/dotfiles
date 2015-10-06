@@ -22,6 +22,22 @@ function prettyjson { echo $1 | python -mjson.tool; }
 
 function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
 
+function webtail {
+  while true; do
+    NEWSTRING="$(curl -s $1)";
+    MYDIFF="$(diff <(echo "$OLDSTRING") <(echo "$NEWSTRING") | tail -n +2)";
+    if [ ! -z "$MYDIFF" ]; then
+      OLDSTRING="$NEWSTRING";
+      echo "$MYDIFF";
+    fi;
+    sleep 1;
+  done; 
+}
+
+function sw-npm {
+  npm $@ --registry http://git.statwolf.com:5984
+}
+
 alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
 #alias mail-list="~/.bin/info.sh mail-list"
 alias gmail="open http://mail.google.com"
