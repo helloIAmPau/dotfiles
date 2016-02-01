@@ -1,27 +1,49 @@
-# Some aliases
-#alias ctags="`brew --prefix`/bin/ctags"
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias mvim="mvim --remote-tab-silent"
-alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias whois="whois -h whois-servers.net"
-#alias batterycycles="echo Cycles: `ioreg -l | grep 'BatteryInfo\" =' | sed -e s/.*$CycleCount=//g | sed 's/\}.*//g'`"
-# View HTTP traffic
-#alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-#alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-# Recursively delete `.DS_Store` files
-#alias rmstore="find . -type f -name '*.DS_Store' -ls -exec git rm {} +"
+#! /usr/bin/env bash
 
-alias enc_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -e"
-alias dec_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -d"
+function linux_aliases {
+  # Enable multi head using displaylink 
+  function goMultiHead {
+    sudo systemctl restart displaylink.service
+    sleep 2
+    xrandr --setprovideroutputsource 1 0
+    xrandr --setprovideroutputsource 2 0
+    xrandr --output "eDP1" --mode 1920x1080 --pos 1920x0 --primary --output "DVI-I-1" --mode 1920x1080 --pos 0x0 --noprimary --output "DVI-I-2" --pos 3840x0 --noprimary
+  }
+  # Get updated configuration file list 
+  alias conflist="egrep 'pac(new|orig|save)' /var/log/pacman.log"
+}
 
-# put a badge
-#alias badge="tput bel"
+function darwin_aliases {
+  # Set locale motherfucker
+  export LC_ALL=en_US.UTF-8
+  # open gmail
+  alias gmail="open http://mail.google.com"
+  # GNU Netcat
+  alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
+  # MacVim configurations
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias mvim="mvim --remote-tab-silent"
+  # Shows dep tree in homebrew
+  function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
+  # Alice router configuration helper
+  alias enc_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -e"
+  alias dec_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -d"
+  #alias ctags="`brew --prefix`/bin/ctags"
+  #alias batterycycles="echo Cycles: `ioreg -l | grep 'BatteryInfo\" =' | sed -e s/.*$CycleCount=//g | sed 's/\}.*//g'`"
+}
 
-# Prettify my JSON
-function prettyjson { echo $1 | python -mjson.tool; }
+[[ "$(uname)" == "Linux" ]] && linux_aliases
+[[ "$(uname)" == "Darwin" ]] && darwin_aliases
 
-function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
-
+# rerun the last command prepending sudo
+alias fuck='sudo $(fc -ln -1)'
+# just calculate
+function calc { echo $(( $1 $2 $3 )) }
+# npm registry shortcut
+function sw-npm {
+  npm $@ --registry http://git.statwolf.com:5984
+}
+# tail for webpages
 function webtail {
   while true; do
     NEWSTRING="$(curl -s $1)";
@@ -33,15 +55,21 @@ function webtail {
     sleep 1;
   done; 
 }
-
-function sw-npm {
-  npm $@ --registry http://git.statwolf.com:5984
-}
-
-alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
+# Prettify my JSON
+function prettyjson { echo $1 | python -mjson.tool; }
+# Recursively delete `.DS_Store` files
+#alias rmstore="find . -type f -name '*.DS_Store' -ls -exec git rm {} +"
+# Network Helpers
+alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias whois="whois -h whois-servers.net"
+# View HTTP traffic
+#alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+#alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+# GMail list
 #alias mail-list="~/.bin/info.sh mail-list"
-alias gmail="open http://mail.google.com"
-
-function calc { echo $(( $1 $2 $3 )) }
-
-alias fuck='sudo $(fc -ln -1)'
+# Default editor
+export EDITOR="vim"
+# DotFiles bin files
+export PATH="$PATH/:$HOME/Develop/dotfiles/bin"
+# Maven binary
+export PATH="$PATH:/opt/maven/bin/"

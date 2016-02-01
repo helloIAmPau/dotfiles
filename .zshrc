@@ -72,34 +72,5 @@ $(git_prompt_info)
 # Customize to your needs...
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-# DotFiles bin files
-export PATH="$PATH/:$HOME/Develop/dotfiles/bin"
-
-### Brew default editor
-export EDITOR="vim"
-
 ### Adding aliases
 [[ -s "$HOME/.aliases" ]] && . $HOME/.aliases
-
-### Set locale motherfucker
-export LC_ALL=en_US.UTF-8
-
-# Specify your defaults in this environment variable
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Android platform tools
-export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools/"
-
-### TexLive binary
-export PATH="$PATH:/opt/TexLive/bin/x86_64-darwin/"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# added by travis gem
-[ -f /Users/helloiampau/.travis/travis.sh ] && source /Users/helloiampau/.travis/travis.sh
-
-### Maven binary
-export PATH="$PATH:/opt/maven/bin/"

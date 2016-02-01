@@ -104,7 +104,7 @@ if bufwinnr(1)
 endif
 
 " copy to mac clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 "map y "*y
 "map p "*p
 "map x "*x
