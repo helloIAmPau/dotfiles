@@ -1,3 +1,31 @@
 [user]
-	email = pasquale.boemio@statwolf.com
-	name = Pasquale Boemio
+  name = Pasquale Boemio
+  email = boemianrapsodi@gmail.com
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow
+  frag = green
+  old = red white reverse
+  new = blue white reverse
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  a = add
+  c = commit
+  cm = commit -m
+  cam = commit -a -m
+  p = push
+  pp = pull
+  co = checkout
+  b = branch
+  s = status
+  d = diff
+[push]
+  default = simple
