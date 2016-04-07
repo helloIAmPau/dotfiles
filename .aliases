@@ -3,11 +3,11 @@
 function linux_aliases {
   # Enable multi head using displaylink 
   function goMultiHead {
+    for o in $(xrandr --listproviders | grep modesetting | awk '{ print $2 }' | sed s/\://); do xrandr --setprovideroutputsource $o 0; done
+    sleep 2
     sudo systemctl restart displaylink.service
     sleep 2
-    xrandr --setprovideroutputsource 1 0
-    xrandr --setprovideroutputsource 2 0
-    xrandr --output "eDP1" --mode 1920x1080 --pos 1920x0 --primary --output "DVI-I-1" --mode 1920x1080 --pos 0x0 --noprimary --output "DVI-I-2" --pos 3840x0 --noprimary
+    xrandr --output "DVI-I-1" --mode 1920x1080 --pos 0x0 --output "eDP1" --mode 1920x1080 --pos 1920x0 --primary --output "DVI-I-2" --pos 3840x0 --mode 1920x1080
   }
   # Get updated configuration file list 
   alias conflist="egrep 'pac(new|orig|save)' /var/log/pacman.log"
@@ -47,6 +47,10 @@ function sw-npm {
 }
 # tail for webpages
 function webtail {
+  if [ $# -eq 0 ]; then
+    echo "usage: webtail remotefile"
+    return
+  fi
   while true; do
     NEWSTRING="$(curl -s $1)";
     MYDIFF="$(diff <(echo "$OLDSTRING") <(echo "$NEWSTRING") | tail -n +2)";
@@ -55,7 +59,7 @@ function webtail {
       echo "$MYDIFF";
     fi;
     sleep 1;
-  done; 
+  done;
 }
 # Prettify my JSON
 function prettyjson { echo $1 | python -mjson.tool; }
@@ -65,7 +69,13 @@ function prettyjson { echo $1 | python -mjson.tool; }
 alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whois="whois -h whois-servers.net"
 # View HTTP traffic
-#alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+function sniff {
+  if [ $# -eq 0 ]; then
+    echo "usage: sniff interface port"
+    return
+  fi
+  sudo ngrep -d $1 -t '^(GET|POST|PUT|DELETE|HEAD) ' "tcp and port $2"
+}
 #alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 # GMail list
 #alias mail-list="~/.bin/info.sh mail-list"
