@@ -7,7 +7,7 @@ function linux_aliases {
     sleep 2
     sudo systemctl restart displaylink.service
     sleep 2
-    xrandr --output "DVI-I-1" --mode 1920x1080 --pos 0x0 --output "eDP1" --mode 1920x1080 --pos 1920x0 --primary --output "DVI-I-2" --pos 3840x0 --mode 1920x1080
+    xrandr --output "DVI-I-2" --mode 1920x1080 --pos 0x0 --output "DVI-I-1" --mode 1920x1080 --pos 1920x0 --primary --output "eDP1" --pos 3840x0 --mode 1920x1080
   }
   # Get updated configuration file list 
   alias conflist="egrep 'pac(new|orig|save)' /var/log/pacman.log"

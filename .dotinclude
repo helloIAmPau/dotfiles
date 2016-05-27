@@ -6,3 +6,4 @@
 .zshrc
 .aliases
 .gitconfig
+.tmux/plugins/tpm/

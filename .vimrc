@@ -63,6 +63,7 @@ set mouse=a
 "noremap <right> <nop>
 " This make me feel a little better
 command! W :w
+command M :!make
 " Prettyfy plugin
 fun! Pretty() "{{{
   if(&ft=='json')
