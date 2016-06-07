@@ -157,6 +157,7 @@ Plugin 'Yggdroot/indentLine'
 
 " Show tags of current code
 Plugin 'majutsushi/tagbar'
+nmap <C-g> :TagbarToggle<CR>
 
 " Git tree explorer
 Plugin 'tpope/vim-fugitive'

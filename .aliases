@@ -23,7 +23,7 @@ function darwin_aliases {
   # GNU Netcat
   alias nc="/usr/local/Cellar/netcat/0.7.1/bin/nc"
   # MacVim configurations
-  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim -p"
   alias mvim="mvim --remote-tab-silent"
   # Shows dep tree in homebrew
   function getFormulaTree { echo $(join <(brew leaves) <(brew deps $1)) }
