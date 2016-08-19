@@ -15,6 +15,15 @@ function linux_aliases {
   alias mirrorssh="screen -S sshmirror -d -m ssh -R 6666:localhost:22 sshmirror.cloudapp.net"
 }
 
+# Pulse audio output selector
+function setAudioOut {
+  pacmd list-sinks | grep -A1 'index'
+  echo -n 'Enter audio sink index o ctrl-c to exit > ';
+  read index;
+  pacmd set-default-sink $index
+  pacmd list-sinks | grep -A1 '\* index'
+}
+
 function darwin_aliases {
   # Set locale motherfucker
   export LC_ALL=en_US.UTF-8

@@ -74,3 +74,5 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 ### Adding aliases
 [[ -s "$HOME/.aliases" ]] && . $HOME/.aliases
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
