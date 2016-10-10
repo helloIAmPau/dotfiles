@@ -65,14 +65,7 @@ set mouse=a
 command! W :w
 command M :!make
 " Prettyfy plugin
-fun! Pretty() "{{{
-  if(&ft=='json')
-    :%!python -m json.tool
-  elseif(&ft=='javascript')
-    :call JsBeautify()
-  endif
-endfunction "}}}
-cabbrev p :call Pretty()
+cabbrev p :call JsBeautify()
 " Biiiiiiig history
 " set history=1000
 " Backup dirs and other stuff
