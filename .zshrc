@@ -41,6 +41,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew coffee encode64 gem gradle last-working-dir npm python pip osx redis-cli urltools vagrant web-search wd)
+#plugins=()
 
 # Sourcing oh-my-zsh to enable configurations
 source $ZSH/oh-my-zsh.sh
@@ -76,3 +77,6 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 [[ -s "$HOME/.aliases" ]] && . $HOME/.aliases
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
