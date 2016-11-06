@@ -39,6 +39,11 @@ function darwin_aliases {
   # Alice router configuration helper
   alias enc_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -e"
   alias dec_alice="openssl aes-128-cbc -K 65316532656263323039373831383630 -nosalt -iv 0 -d"
+
+
+  export NVM_DIR="$HOME/.nvm"
+  . "$(brew --prefix nvm)/nvm.sh"
+
   #alias ctags="`brew --prefix`/bin/ctags"
   #alias batterycycles="echo Cycles: `ioreg -l | grep 'BatteryInfo\" =' | sed -e s/.*$CycleCount=//g | sed 's/\}.*//g'`"
 
@@ -66,6 +71,8 @@ function darwin_aliases {
     alias ld=/usr/bin/gcc
     alias cc=/usr/bin/gcc
   }
+
+  export ANDROID_HOME=/usr/local/opt/android-sdk
 }
 
 [[ "$(uname)" == "Linux" ]] && linux_aliases

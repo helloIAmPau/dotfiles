@@ -1,0 +1,28 @@
+snippet test "Mocha test case"
+const mocha = require('mocha');
+const chai = require('chai');
+const should = chai.should();
+const sm = require('sandboxed-module');
+
+describe('${1:The module}', function() {
+
+	let mut;
+
+	beforeEach(function(done) {
+		mut = sm.require('${2:the path}', {});
+
+		done();
+	});
+
+	$0
+
+});
+endsnippet
+
+snippet it "It clause"
+it('should ${1:do something}', function(done) {
+
+	$0
+
+});
+endsnippet

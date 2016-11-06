@@ -2,6 +2,7 @@
 .bin/
 .tmux.conf
 .vim/bundle/Vundle.vim/
+.vim/UltiSnips/
 .vimrc
 .zshrc
 .aliases
