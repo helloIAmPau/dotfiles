@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
 
 function linux_aliases {
+  function sw-vim {
+    vim $(echo ~/develop/statwolf/$(echo "$1" | sed 's/\./\//g')/$(echo "$1" | awk -F '.' '{print $NF}')$2.js)
+  }
   # Enable multi head using displaylink 
   function goMultiHead {
     for o in $(xrandr --listproviders | grep modesetting | awk '{ print $2 }' | sed s/\://); do xrandr --setprovideroutputsource $o 0; done
@@ -12,7 +15,7 @@ function linux_aliases {
   # Get updated configuration file list 
   alias conflist="egrep 'pac(new|orig|save)' /var/log/pacman.log"
   # Default reverse ssh host
-  alias mirrorssh="screen -S sshmirror -d -m ssh -R 6666:localhost:22 sshmirror.cloudapp.net"
+  alias mirrorssh="screen -S sshmirror -m ssh -R 6666:localhost:22 sshmirror.cloudapp.net"
 }
 
 # Pulse audio output selector
@@ -21,6 +24,7 @@ function setAudioOut {
   echo -n 'Enter audio sink index o ctrl-c to exit > ';
   read index;
   pacmd set-default-sink $index
+  for s in $(pacmd list-sink-inputs | grep index | awk '{print $2}'); do pacmd move-sink-input $s $index; done
   pacmd list-sinks | grep -A1 '\* index'
 }
 
@@ -101,6 +105,11 @@ function webtail {
     fi;
     sleep 1;
   done;
+}
+
+# Convert spotify URIs
+function s {
+  echo $1 | sed s/https:\\/\\/play\.// | sed s/\.com// | sed s/\\//:/g | xclip
 }
 # Prettify my JSON
 function prettyjson { echo $1 | python -mjson.tool; }

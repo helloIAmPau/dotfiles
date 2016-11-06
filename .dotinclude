@@ -3,6 +3,7 @@
 .tmux.conf
 .vim/bundle/Vundle.vim/
 .vim/UltiSnips/
+.vim/.editorconfig
 .vimrc
 .zshrc
 .aliases
