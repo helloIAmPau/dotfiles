@@ -15,7 +15,7 @@ function linux_aliases {
   # Get updated configuration file list 
   alias conflist="egrep 'pac(new|orig|save)' /var/log/pacman.log"
   # Default reverse ssh host
-  alias mirrorssh="screen -S sshmirror -m ssh -R 6666:localhost:22 sshmirror.cloudapp.net"
+  alias mirrorssh="screen -S sshmirror -m ssh -R 6666:localhost:22 helloiampau.cloudapp.net"
 }
 
 # Pulse audio output selector
