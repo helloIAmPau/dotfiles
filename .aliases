@@ -82,6 +82,10 @@ function darwin_aliases {
 [[ "$(uname)" == "Linux" ]] && linux_aliases
 [[ "$(uname)" == "Darwin" ]] && darwin_aliases
 
+json_escape () {
+  printf '%s' $1 | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
+}
+
 # rerun the last command prepending sudo
 alias fuck='sudo $(fc -ln -1)'
 # just calculate
@@ -118,6 +122,7 @@ function prettyjson { echo $1 | python -mjson.tool; }
 # Network Helpers
 alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whois="whois -h whois-servers.net"
+alias random="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1"
 # View HTTP traffic
 function sniff {
   if [ $# -eq 0 ]; then
