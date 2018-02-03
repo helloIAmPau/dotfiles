@@ -1,7 +1,9 @@
 snippet test "Mocha test case"
 const mocha = require('mocha');
 const chai = require('chai');
-const should = chai.should();
+const except = chai.except;
+const sinon = require('sinon');
+chai.use(require('sinon-chai'));
 const sm = require('sandboxed-module');
 
 describe('${1:The module}', function() {
