@@ -140,3 +140,5 @@ export EDITOR="vim"
 export PATH="$PATH/:$HOME/Develop/dotfiles/bin"
 # Maven binary
 export PATH="$PATH:/opt/maven/bin/"
+
+alias http="python -m SimpleHTTPServer"
