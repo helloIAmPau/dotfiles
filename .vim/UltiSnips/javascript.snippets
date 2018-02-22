@@ -1,3 +1,25 @@
+snippet testwebpack "Mocha webpack test case"
+const chai = require('chai');
+const expect = chai.expect;
+const sinon = require('sinon');
+chai.use(require('sinon-chai'));
+const sm = require('inject-loader!${2:the path}');
+
+describe('${1:The module}', function() {
+
+	let mut;
+
+	beforeEach(function(done) {
+		mut = sm({});
+
+		done();
+	});
+
+	$0
+
+});
+endsnippet
+
 snippet test "Mocha test case"
 const mocha = require('mocha');
 const chai = require('chai');
